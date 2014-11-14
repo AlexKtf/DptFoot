@@ -1,4 +1,4 @@
-DptFoot.controller 'NavController', ['$rootScope', '$scope', '$state', '$location', 'Current', 'User', ($rootScope, $scope, $state, $location, Current, User) ->
+DptFoot.controller 'NavCtrl', ['$rootScope', '$scope', '$state', '$location', 'Current', 'User', ($rootScope, $scope, $state, $location, Current, User) ->
 
   $scope.user = Current.user
 

@@ -1,4 +1,4 @@
-window.DptFoot = angular.module 'DptFoot', ['ngResource', 'ngRoute', 'ngAnimate', 'templates', 'ui.router']
+window.DptFoot = angular.module 'DptFoot', ['ngResource', 'ngAnimate', 'templates', 'ui.router']
 
 
 DptFoot.run ($rootScope, $state, Current, User) ->

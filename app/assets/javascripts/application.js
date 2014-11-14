@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-resource
-//= require angular-route
 //= require angular-animate
 //= require angular-ui-router.min
 //= require slick.min

@@ -1,4 +1,4 @@
-DptFoot.controller 'HomeCtrl', ['$window', 'Current', '$rootScope', '$scope', '$state', '$location', 'User', ($window, Current, $rootScope, $scope, $state, $location, User) ->
+DptFoot.controller 'HomeCtrl', ['Current', '$rootScope', '$scope', '$state', '$location', 'User', (Current, $rootScope, $scope, $state, $location, User) ->
 
   if Current.user && Current.user.id
     $scope.user = Current.user
