@@ -1,7 +1,4 @@
-DptFoot.controller 'HomeCtrl', ['Current', '$rootScope', '$scope', '$state', '$location', 'User', (Current, $rootScope, $scope, $state, $location, User) ->
-
-  if Current.user && Current.user.id
-    $scope.user = Current.user
+DptFoot.controller 'HomeCtrl', ['$rootScope', '$scope', '$state', '$location', 'User', ($rootScope, $scope, $state, $location, User) ->
 
   $scope.wantConnect = true
 
@@ -13,7 +10,6 @@ DptFoot.controller 'HomeCtrl', ['Current', '$rootScope', '$scope', '$state', '$l
     , success = (data) ->
       $scope.setCurrentUser(data)
       $scope.resetErrors()
-      $rootScope.$broadcast 'user:logged_in', data
       $scope.redirectOnLogin() if $rootScope.referer?
     , error = (data) ->
       $scope.registerErrors = data.data
@@ -23,7 +19,6 @@ DptFoot.controller 'HomeCtrl', ['Current', '$rootScope', '$scope', '$state', '$l
     , success = (data) ->
       $scope.setCurrentUser(data)
       $scope.resetErrors()
-      $rootScope.$broadcast 'user:logged_in', data
       $scope.redirectOnLogin($rootScope.referer)
     , error = (data) ->
       $scope.loginError = data.data
@@ -33,7 +28,7 @@ DptFoot.controller 'HomeCtrl', ['Current', '$rootScope', '$scope', '$state', '$l
     $scope.wantConnect = wanted
 
   $scope.setCurrentUser = (user) ->
-    Current.user = user
+    $rootScope.user = user
     localStorage['clientToken'] = user.authentication_token
     localStorage['clientId'] = user.id
 

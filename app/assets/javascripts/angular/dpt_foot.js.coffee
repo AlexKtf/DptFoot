@@ -1,12 +1,11 @@
 window.DptFoot = angular.module 'DptFoot', ['ngResource', 'ngAnimate', 'templates', 'ui.router']
 
 
-DptFoot.run ($rootScope, $state, Current, User) ->
+DptFoot.run ($rootScope, $state, User) ->
   if localStorage['clientToken']? and localStorage['clientId']?
     User.get { id: localStorage['clientId'] }
     , success = (user) ->
-      Current.user = user
-      $rootScope.$broadcast 'user:logged_in', user
+      $rootScope.user = user
       $state.go('departments') if $state.is('home')
     , error = (data) ->
       console.log data

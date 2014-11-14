@@ -1,4 +1,4 @@
-DptFoot.controller 'PlaceCtrl', ['$scope', '$stateParams', '$filter', 'Place', 'Participation', 'Current', ($scope, $stateParams, $filter, Place, Participation, Current) ->
+DptFoot.controller 'PlaceCtrl', ['$rootScope', '$scope', '$stateParams', '$filter', 'Place', 'Participation', ($rootScope, $scope, $stateParams, $filter, Place, Participation) ->
   
   $scope.loading = true
   $scope.slickLoading = true
@@ -7,18 +7,15 @@ DptFoot.controller 'PlaceCtrl', ['$scope', '$stateParams', '$filter', 'Place', '
     $scope.place = place
     $scope.participations = $filter('group')(place.participations_with_users, 6)
 
-    if !angular.isUndefined(Current.user)
-      $scope.user = Current.user
-
     $scope.loading = false
     return if has_no_participations(place.participations_with_users)
     
-    participation = $filter('filter')(place.participations_with_users, (participation) -> return participation.user.id == $scope.user.id)
+    participation = $filter('filter')(place.participations_with_users, (participation) -> return participation.user.id == $rootScope.user.id)
     $scope.is_participant = participation.length > 0
 
 
   $scope.participate = () ->
-    Participation.save { participation: { user_id: $scope.user.id, place_id: $scope.place.id } }
+    Participation.save { participation: { user_id: $rootScope.user.id, place_id: $scope.place.id } }
     , success = (participation) ->
       $scope.is_participant = true
       $scope.place.participations_with_users.push(participation)
@@ -34,8 +31,4 @@ DptFoot.controller 'PlaceCtrl', ['$scope', '$stateParams', '$filter', 'Place', '
       $scope.is_participant = false
       return true
     return false
-
-
-  $scope.$on 'Current::logout', () ->
-    $scope.user = null
 ]
