@@ -51,10 +51,5 @@ DptFoot.config ['$httpProvider', '$locationProvider', '$stateProvider', '$urlRou
       config.headers['clientId'] = localStorage['clientId']
       return config
 
-    responseError: (response) ->
-
-
-
 ]
-
       

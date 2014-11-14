@@ -1,4 +1,4 @@
-DptFoot.factory 'User', ['$resource', 'Current', ($resource, Current) ->
+DptFoot.factory 'User', ['$resource', ($resource) ->
 
   return $resource '/users/:id.json', id: '@id',
     update:

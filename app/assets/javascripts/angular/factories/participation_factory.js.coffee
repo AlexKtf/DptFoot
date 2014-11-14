@@ -1,4 +1,4 @@
-DptFoot.factory 'Participation', ['$resource', 'Current', ($resource, Current) ->
+DptFoot.factory 'Participation', ['$resource', ($resource) ->
 
   return $resource '/participations/:participationId.json', { placeId: '@placeId', participationId: '@participationId' },
     update:
