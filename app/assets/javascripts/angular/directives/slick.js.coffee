@@ -1,4 +1,4 @@
-DptFoot.directive 'slick',['$timeout', ($timeout) ->
+DptFoot.directive 'slick', ['$timeout', ($timeout) ->
   return {
     restrict: 'A'
     link: ($scope, element, attrs) ->

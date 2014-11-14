@@ -2,8 +2,8 @@ DptFoot.controller 'PlacesCtrl', ['$scope', '$stateParams', 'Department', ($scop
 
   $scope.loading = true
   
-  Department.query { id: $stateParams['departmentId'] }, (data, status) ->
-    $scope.places = data
+  Department.query { id: $stateParams['departmentId'] }, (places, status) ->
+    $scope.places = places
     $scope.loading = false
 
 ]
