@@ -8,7 +8,7 @@ DptFoot.controller 'PlaceCtrl', ['$rootScope', '$scope', '$stateParams', '$filte
     $scope.participations = $filter('group')(place.participations_with_users, 6)
 
     $scope.loading = false
-    return if has_no_participations(place.participations_with_users)
+    return if has_no_participations(place.participations_with_users) or !$rootScope.user?
     
     participation = $filter('filter')(place.participations_with_users, (participation) -> return participation.user.id == $rootScope.user.id)
     $scope.is_participant = participation.length > 0

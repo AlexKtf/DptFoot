@@ -10,7 +10,7 @@
       #participants-block-inner
         %h2
           PARTICIPANTS
-          .participate-button.animate-opacity.pull-right{ data: { 'ng-if' => 'user.id && !is_participant' } }
+          .participate-button.animate-opacity.pull-right{ data: { 'ng-if' => 'user && !is_participant' } }
             %button.btn.btn-success{ data: { 'ng-click' => 'participate()' } }
               PARTICIPATE
         #participants
