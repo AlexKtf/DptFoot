@@ -2,13 +2,13 @@ class ApplicationSerializer < ActiveModel::Serializer
   delegate :cache_key, to: :object
   
   def to_json(*args)
-    Rails.cache.fetch expand_cache_key(self.class.to_s.underscore, cache_key, 'to-json') do
+    Rails.cache.fetch expand_cache_key(self.class.to_s.underscore, cache_key, Date.today, 'to-json') do
       super
     end
   end
 
   def serializable_hash
-    Rails.cache.fetch expand_cache_key(self.class.to_s.underscore, cache_key, 'serilizable-hash') do
+    Rails.cache.fetch expand_cache_key(self.class.to_s.underscore, cache_key, Date.today, 'serilizable-hash') do
       super
     end
   end

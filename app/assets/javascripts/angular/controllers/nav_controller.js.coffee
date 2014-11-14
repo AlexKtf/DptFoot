@@ -16,5 +16,5 @@ DptFoot.controller 'NavController', ['$rootScope', '$scope', '$state', '$locatio
       localStorage.removeItem('clientToken')
       localStorage.removeItem('clientId')
       $scope.user = null
-
+      $rootScope.$broadcast 'Current::logout'
 ]

@@ -10,9 +10,8 @@
       #participants-block-inner
         %h2
           PARTICIPANTS
-
-          .pull-right{ data: { 'ng-if' => 'user.id && !is_participant' } }
-            %button{ data: { 'ng-click' => 'participate()' } }
+          .participate-button.animate-opacity.pull-right{ data: { 'ng-if' => 'user.id && !is_participant' } }
+            %button.btn.btn-success{ data: { 'ng-click' => 'participate()' } }
               PARTICIPATE
         #participants
           #slickLoader{ data: { 'ng-if' => 'slickLoading' }}

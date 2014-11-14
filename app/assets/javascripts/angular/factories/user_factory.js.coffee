@@ -26,6 +26,6 @@ DptFoot.factory 'User', ['$resource', 'Current', ($resource, Current) ->
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
       data:
         user:
-          id: 36
+          id: '@id'
 
 ]

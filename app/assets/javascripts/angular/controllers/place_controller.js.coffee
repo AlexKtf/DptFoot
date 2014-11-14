@@ -1,5 +1,6 @@
 DptFoot.controller 'PlaceCtrl', ['$scope', '$stateParams', '$filter', 'Place', 'Participation', 'Current', ($scope, $stateParams, $filter, Place, Participation, Current) ->
   
+  $scope.loading = true
   $scope.slickLoading = true
 
   Place.get { id: $stateParams['placeId'] }, (place, status) ->
@@ -9,10 +10,12 @@ DptFoot.controller 'PlaceCtrl', ['$scope', '$stateParams', '$filter', 'Place', '
     if !angular.isUndefined(Current.user)
       $scope.user = Current.user
 
+    $scope.loading = false
     return if has_no_participations(place.participations_ids_of_todays)
     
     participation = $filter('filter')(place.participations_ids_of_todays, (participation) -> return participation == $scope.user.id)
     $scope.is_participant = participation.length > 0
+
 
   $scope.participate = () ->
     Participation.save { participation: { user_id: $scope.user.id, place_id: $scope.place.id } }
@@ -33,8 +36,7 @@ DptFoot.controller 'PlaceCtrl', ['$scope', '$stateParams', '$filter', 'Place', '
       return true
     return false
 
-  updateParticipations = () ->
 
-
-   $scope.$watch('participations', updateParticipations)
+  $scope.$on 'Current::logout', () ->
+    $scope.user = null
 ]
