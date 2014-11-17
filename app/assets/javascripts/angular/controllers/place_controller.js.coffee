@@ -1,7 +1,6 @@
 DptFoot.controller 'PlaceCtrl', ['$rootScope', '$scope', '$stateParams', '$filter', 'Place', 'Participation', ($rootScope, $scope, $stateParams, $filter, Place, Participation) ->
   
   $scope.loading = true
-  $scope.slickLoading = true
 
   Place.get { id: $stateParams['placeId'] }, (place, status) ->
     $scope.place = place
@@ -19,7 +18,6 @@ DptFoot.controller 'PlaceCtrl', ['$rootScope', '$scope', '$stateParams', '$filte
     , success = (participation) ->
       $scope.is_participant = true
       $scope.place.participations_with_users.push(participation)
-      $scope.slickLoading = true
       $scope.participations = $filter('group')($scope.place.participations_with_users, 6)
       $scope.$broadcast 'addSlick'
     , error = (data) ->

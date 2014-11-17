@@ -1,5 +1,5 @@
 class PlaceSerializer < ApplicationSerializer
-  attributes :id, :name, :address, :town, :slug, :department_slug, :participations_with_users
+  attributes :id, :name, :address, :town, :image_link, :slug, :department_slug, :participations_with_users
 
   def slug
     object.slug

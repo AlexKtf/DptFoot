@@ -14,9 +14,7 @@
             %button.btn.btn-success{ data: { 'ng-click' => 'participate()' } }
               PARTICIPATE
         #participants
-          #slickLoader{ data: { 'ng-if' => 'slickLoading' }}
-            %img{ data: { 'ng-src' => "#{asset_path('loader.gif')}"} }
-          %slick#slick{ data: { 'slick' => '', 'ng-class' => '{hide: slickLoading}' } }
+          %slick#slick{ data: { 'slick' => '' } }
             %div{ data: { 'ng-repeat' => 'participations_grouped in participations' } }
               .col-md-12.col-xs-12
                 %div{ data: { 'ng-repeat' => 'participation in participations_grouped' } }
@@ -27,7 +25,12 @@
       #place-infos-block-inner
         %h2
           ACCES TERRAIN
-
+        #place-infos.col-md-12
+          .col-md-12
+            %img{ data: { 'ng-src' => '{{place.image_link}}' } }
+          .col-md-12
+            {{place.address}}, {{place.town}}
+            
     .col-md-1
   .row
     .col-md-1

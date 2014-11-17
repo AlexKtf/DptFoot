@@ -5,14 +5,12 @@ DptFoot.directive 'slick', ['$timeout', ($timeout) ->
       $timeout ()->
         $(element).slick({infinite: false, slidesToShow: 1, slidesToScroll: 1})
       , 100
-      $scope.slickLoading = false
 
       $scope.$on 'addSlick', () ->
         $(element).unslick()
         $timeout ()->
           $(element).slick({infinite: false, slidesToShow: 1, slidesToScroll: 1})
         , 100
-        $scope.slickLoading = false
 
   }
 ]
